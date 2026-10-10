@@ -17,8 +17,8 @@ public class InsertVehiculo {
         PreparedStatement ps = null;
 
         String sql = """
-                     INSERT INTO vehiculos (placa, marca, modelo, anio, precio, color, disponible)
-                     VALUES (?, ?, ?, ?, ?, ?, ?)
+                     INSERT INTO vehiculos (placa, marca, modelo, anio, precio, color, disponible, kilometraje)
+                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                      """;
 
         try {
@@ -32,6 +32,7 @@ public class InsertVehiculo {
             ps.setDouble(5, vehiculo.getPrecio());
             ps.setString(6, vehiculo.getColor());
             ps.setBoolean(7, vehiculo.isDisponible());
+            ps.setInt(8, vehiculo.getKilometraje());
 
             int filas = ps.executeUpdate();
 
@@ -44,6 +45,7 @@ public class InsertVehiculo {
             } else {
                 Log.error("Error SQL: " + e.getMessage());
             }
+            
         } catch (Exception e) {
             Log.error("Ocurrio un error durante la ejecucion: " + e.getMessage());
         } finally {

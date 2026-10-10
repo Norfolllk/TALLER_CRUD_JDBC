@@ -19,7 +19,7 @@ public class SelectVehiculo {
         ResultSet rs = null;
 
         String sql = """
-                select placa, marca, modelo, anio, precio, color, disponible from vehiculos;
+                select placa, marca, modelo, anio, precio, color, disponible, kilometraje from vehiculos;
                 """;
 
         try {
@@ -37,6 +37,7 @@ public class SelectVehiculo {
                 vehiculo.setPrecio(rs.getDouble("precio"));
                 vehiculo.setColor(rs.getString("color"));
                 vehiculo.setDisponible(rs.getBoolean("disponible"));
+                vehiculo.setKilometraje(rs.getInt("kilometraje"));
 
                 Log.info(vehiculo);
             }
@@ -46,10 +47,10 @@ public class SelectVehiculo {
             try {
                 con.close();
                 ps.close();
-                rs.close();
                 Log.info("Se cerraron las conexiones de forma correcta");
-            } catch (SQLException e) {
-                Log.error("Ocurrio un error al cerrar las conexiones: ", e.getMessage());
+            } catch (Exception e) {
+                Log.error("Ocurrio un error al mostrar datos de vehiculos: " + e.getMessage(), e);
+                e.printStackTrace();
             }
         }
     }

@@ -26,7 +26,8 @@ public class UpdateVehiculo {
                 anio = ?,
                 precio = ?,
                 color = ?,
-                disponible = ?
+                disponible = ?,
+                kilometraje = ?
                 where placa = ?;
                 """;
 
@@ -40,9 +41,10 @@ public class UpdateVehiculo {
             ps.setDouble(4, vehiculo.getPrecio());
             ps.setString(5, vehiculo.getColor());
             ps.setBoolean(6, vehiculo.isDisponible());
-
+            ps.setInt(7, vehiculo.getKilometraje());
+            
             // condicion where
-            ps.setString(7, vehiculo.getPlaca());
+            ps.setString(8, vehiculo.getPlaca());
 
             int filas = ps.executeUpdate();
             Log.info("Filas actualizadas: " + filas);
