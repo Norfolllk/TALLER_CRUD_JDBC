@@ -20,12 +20,12 @@ public class ConexionTest {
             Log.error("Error de conexion: " + e.getMessage());
         } finally {
             try {
-                con.close();
-                Log.info("Conexion cerrada");
+                if (con != null) {
+                    con.close();
+                    Log.info("Conexion cerrada");
+                }
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                Log.info("Error al cerrar la conexion");
+                Log.error("Error al cerrar la conexion: " + e.getMessage());
             }
         }
     }

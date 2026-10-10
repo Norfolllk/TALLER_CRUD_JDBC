@@ -17,10 +17,10 @@ public class Conexion {
     public static Connection getConnection() {
         try {
             Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-            Log.info("Conexion existosa");
+            Log.info("Conexion exitosa");
             return con;
         } catch (Exception e) {
-            Log.error("Error en la conexion" + e.getMessage());
+        	Log.error("Error en la conexion: " + e.getMessage());
             throw new RuntimeException("No se pudo conectar", e);
         }
     }

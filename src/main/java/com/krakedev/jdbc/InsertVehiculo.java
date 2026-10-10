@@ -38,18 +38,27 @@ public class InsertVehiculo {
             Log.info("Filas insertadas: " + filas);
 
 
+        } catch (SQLException e) {
+            if ("23505".equals(e.getSQLState())) {
+                Log.error("La placa " + vehiculo.getPlaca() + " ya existe");
+            } else {
+                Log.error("Error SQL: " + e.getMessage());
+            }
         } catch (Exception e) {
-            Log.error("Ocurrio un error durante la ejecución: " + e.getMessage());
+            Log.error("Ocurrio un error durante la ejecucion: " + e.getMessage());
         } finally {
             try {
-                ps.close();
-                con.close();
-                Log.info("Conexion cerrada");
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                    Log.info("Conexion cerrada");
+                }
             } catch (SQLException e) {
-                Log.error("Ocurrio un erro al cerrar la conexion: " + e.getMessage());
+                Log.error("Ocurrio un error al cerrar la conexion: " + e.getMessage());
             }
         }
     }
 }
-
 
