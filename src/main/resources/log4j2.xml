@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 	
-	<Appenders>
+	<Appenders>  
 	
-		<Console name="Console" target= "SYSTEM_OUT">
+		<Console name="Console" target= "SYSTEM_OUT">  
 		
-			<PatternLayout pattern="%-5level [%logger{1}] %msg %n"/>
+			<PatternLayout pattern="%-5level [%logger{1}] %msg %n"/>  
 		
-		</Console>
+		</Console>  
 	
-	</Appenders>
+	</Appenders>  
 	
-	<Loggers>
+	<Loggers>  
 	
-		<Root level="info">
+		<Root level="info">  
 		
-			<AppenderRef ref="Console"/>
+			<AppenderRef ref="Console"/>  
 		
-		</Root>
+		</Root>  
 	
-	</Loggers>
+	</Loggers>  
 	
-</Configuration>
+</Configuration>  
